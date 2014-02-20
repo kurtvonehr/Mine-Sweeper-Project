@@ -32,7 +32,11 @@ public class MineSweeperPanel implements ActionListener{
 	
 	private JFrame frame = new JFrame();
 	
-	Icon flag = new ImageIcon("flag_icon.png");
+	//sets icons for button pressing
+	ImageIcon flag = new ImageIcon("//WINSERV/Profiles$/vonehrk/"
+			+ "My Documents/vonehrk/MineSweeperPrj/src/package1/flag_icon2.png");
+	ImageIcon mine = new ImageIcon("//WINSERV/Profiles$/vonehrk/"
+			+ "My Documents/vonehrk/MineSweeperPrj/src/package1/Minesweeper_Icon.png");
 	
 	//creates the frame for the game play
 	public MineSweeperPanel(int mines, int size) {
@@ -102,7 +106,7 @@ public class MineSweeperPanel implements ActionListener{
 				if (iCell.isExposed()){ 
 					board[row][col].setEnabled(false); 
 					if(iCell.isMine())
-						board[row][col].setText("*");
+						board[row][col].setIcon(mine);
 					if(iCell.getMineCount()>0 && !iCell.isMine())
 						board[row][col].setText("" + iCell.getMineCount());
 					if(iCell.getMineCount() == 0 && !iCell.isMine())
@@ -110,12 +114,14 @@ public class MineSweeperPanel implements ActionListener{
 				}
 				else{
 					board[row][col].setEnabled(true);
-					if(!iCell.isFlagged() && !showMinesToggle)
+					if(!iCell.isFlagged() && !showMinesToggle){
+						board[row][col].setIcon(null);
 						board[row][col].setText("");
+					}
 				}
 				
 			 }
-		//displays the number of wins and loses to the user at the top of the board
+		//displays the number of wins and loses at the top of the board
 		winsLabel.setText("Wins: " + this.getWins());
 		losesLabel.setText("Loses: " + this.getLoses());
 			 
@@ -126,14 +132,16 @@ public class MineSweeperPanel implements ActionListener{
         public void mousePressed( MouseEvent e ){  
         	for (int row = 0; row < size; row++){
         		for (int col = 0; col < size; col++){ 
-   				 	if (board[row][col] == e.getSource() && e.isMetaDown() && board[row][col].isEnabled()){
-   				 		//toggles flag on and off when double right clicked
+   				 	if (board[row][col] == e.getSource() && e.isMetaDown() 
+   				 			&& board[row][col].isEnabled()){
+   				 		
    				 		iCell = game.getCell(row,col);
    				 		if(!flagToggle){
-   				 			board[row][col].setText("!");
+   				 			board[row][col].setIcon(flag);
    				 			iCell.setFlagged(true);
    				 		}
    				 		else{
+   				 			board[row][col].setIcon(null);
    				 			board[row][col].setText("");
    				 			iCell.setFlagged(false);
    				 		}
@@ -201,16 +209,20 @@ public class MineSweeperPanel implements ActionListener{
 							board[row][col].setText("*");
 						else if(iCell.getMineCount()>0)
 							board[row][col].setText("" + iCell.getMineCount());
-						else
+						else{
 							board[row][col].setText("");
+							board[row][col].setIcon(null);
+						}
 					 }
 				}
 			else{
 				for (int row = 0; row < size; row++) 
 					 for (int col = 0; col < size; col++) { 
 						iCell = game.getCell(row,col);
-						if(!iCell.isExposed())
+						if(!iCell.isExposed()){
 							board[row][col].setText("");
+							board[row][col].setIcon(null);
+						}
 					 }
 				}
 			showMinesToggle = !showMinesToggle;
