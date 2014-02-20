@@ -1,12 +1,12 @@
 package package1;
 
 public class Cell {
-    private int mineCount = 0; 
-    private boolean isFlagged; 
-    private boolean isExposed; 
+    	private int mineCount = 0; 
+    	private boolean isFlagged; 
+    	private boolean isExposed; 
 	private boolean isMine; 
 	 
-	 
+	//Constructor to set surrounding minecount, flagged, exposed and mine 
 	public Cell(int i, boolean b, boolean c, boolean d) {
 		this.setMineCount(i);
 		this.setFlagged(b);
