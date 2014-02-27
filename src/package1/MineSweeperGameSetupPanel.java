@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 
 public class MineSweeperGameSetupPanel implements ActionListener{
 	
+	//TESTETSESTSETSETSET
+	
 	private JButton quitButton = new JButton("Quit");
 	private JButton startButton = new JButton("Start Game");
 	private JLabel sizeInput = new JLabel("Size");
