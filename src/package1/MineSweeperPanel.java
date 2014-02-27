@@ -24,8 +24,8 @@ public class MineSweeperPanel implements ActionListener{
 
 	private JButton quitButton = new JButton("Quit");
 	private JButton resetButton = new JButton("Reset");
-	private JButton showMines = new JButton("Reveal");
-	private JButton newBoard = new JButton("New Board");
+	private JButton showMinesButton = new JButton("Reveal");
+	private JButton newBoardButton = new JButton("New Board");
 
 	private JLabel winsLabel = new JLabel();
 	private JLabel losesLabel = new JLabel();
@@ -44,8 +44,8 @@ public class MineSweeperPanel implements ActionListener{
 		
 		quitButton.addActionListener(this);
 		resetButton.addActionListener(this);
-		showMines.addActionListener(this);
-		newBoard.addActionListener(this);
+		showMinesButton.addActionListener(this);
+		newBoardButton.addActionListener(this);
 
 		board = new JButton[size][size];
 		
@@ -61,10 +61,10 @@ public class MineSweeperPanel implements ActionListener{
 		winsLabel.setText("Wins: " + this.getWins());
 		losesLabel.setText("Loses: " + this.getLoses());
 		
-		optionPanel.add(showMines);
+		optionPanel.add(showMinesButton);
 		optionPanel.add(resetButton);
 		optionPanel.add(quitButton);
-		optionPanel.add(newBoard);
+		optionPanel.add(newBoardButton);
 		scoreCountPanel.add(winsLabel);
 		scoreCountPanel.add(losesLabel);
         
@@ -175,14 +175,14 @@ public class MineSweeperPanel implements ActionListener{
 			
 		}
 		
-		if(e.getSource() == newBoard){
+		if(e.getSource() == newBoardButton){
 			MineSweeperGameSetupPanel setup = new MineSweeperGameSetupPanel();
 			setup.setWins(this.getWins());
 			setup.setLoses(this.getLoses());
 			frame.dispose();
 		}
 		
-		if(e.getSource() == showMines){
+		if(e.getSource() == showMinesButton){
 			if(!showMinesToggle){
 				for (int row = 0; row < size; row++) 
 					 for (int col = 0; col < size; col++) { 

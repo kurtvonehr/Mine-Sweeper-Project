@@ -13,14 +13,14 @@ public class MineSweeperGameSetupPanel implements ActionListener{
 	
 	private JButton quitButton = new JButton("Quit");
 	private JButton startButton = new JButton("Start Game");
-	private JLabel sizeInput = new JLabel("Size");
-	private JLabel minesInput = new JLabel("Mines");
+	private JLabel sizeInputLabel = new JLabel("Size");
+	private JLabel minesInputLabel = new JLabel("Mines");
 	private JLabel gameLabel = new JLabel("Game Setup");
 	private String[] size1 = new String[30];
 	private String[] mine1 = new String[10];
     private JFrame frame = new JFrame("MineSweeper");
-    private JComboBox mines;
-    private JComboBox size;
+    private JComboBox minesComboBox;
+    private JComboBox sizeComboBox;
     	
 	public int wins = 0;
 	public int loses = 0;
@@ -48,17 +48,17 @@ public class MineSweeperGameSetupPanel implements ActionListener{
 			size1[i] = Integer.toString(i+1);
 		}
 		
-		mines = new JComboBox(mine1);
-		size = new JComboBox(size1);
-		mines.setSelectedIndex(9);
-		size.setSelectedIndex(9);
+		minesComboBox = new JComboBox(mine1);
+		minesComboBox = new JComboBox(size1);
+		minesComboBox.setSelectedIndex(9);
+		minesComboBox.setSelectedIndex(9);
 		
 		optionPanel.add(startButton);
 		optionPanel.add(quitButton);
-		sizePanel.add(sizeInput);
-		sizePanel.add(size);
-		minesPanel.add(minesInput);
-		minesPanel.add(mines);
+		sizePanel.add(sizeInputLabel);
+		sizePanel.add(minesComboBox);
+		minesPanel.add(minesInputLabel);
+		minesPanel.add(minesComboBox);
 		setupPanel.add(sizePanel);
 		setupPanel.add(minesPanel);
 		gamePanel.add(gameLabel);
@@ -81,8 +81,8 @@ public class MineSweeperGameSetupPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == startButton){
-			int mines = this.mines.getSelectedIndex() + 1;
-			int size = this.size.getSelectedIndex() + 1;
+			int mines = this.minesComboBox.getSelectedIndex() + 1;
+			int size = this.minesComboBox.getSelectedIndex() + 1;
 			MineSweeperPanel gamePanel = new MineSweeperPanel(mines, size);
 			gamePanel.setLoses(loses);
 			gamePanel.setWins(wins);
