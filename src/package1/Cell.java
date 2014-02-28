@@ -38,4 +38,6 @@ public class Cell {
 		this.isMine = isMine;
 	}
 	
+	CELELELELELLELELE
+	
 }
