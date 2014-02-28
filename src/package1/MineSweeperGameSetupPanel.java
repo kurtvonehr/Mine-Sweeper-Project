@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 
 public class MineSweeperGameSetupPanel implements ActionListener{
 	
-	//TESTETSESTSETSETSET
 	
 	private JButton quitButton = new JButton("Quit");
 	private JButton startButton = new JButton("Start Game");
@@ -84,7 +83,7 @@ public class MineSweeperGameSetupPanel implements ActionListener{
 	
 
 	@Override
-	public void actionPerformed(AasdfasdfasdfasdfctionEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		
 		//when the start button is pressed, begin a new game,
 		//set the loses and wins and refresh the board to reflect
@@ -108,6 +107,26 @@ public class MineSweeperGameSetupPanel implements ActionListener{
 		
 	}
 
+	//gets the number of wins, default 0
+	public int getWins() {
+		return wins;
+	}
+
+	//sets the nubmer of wins
+	public void setWins(int wins) {
+		this.wins = wins;
+	}
+
+	//gets the number of loses, default 0
+	public int getLoses() {
+		return loses;
+	}
+
+	//sets the number of loses
+	public void setLoses(int loses) {
+		this.loses = loses;
+	}
+	
 	
 }
 	
